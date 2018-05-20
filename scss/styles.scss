@@ -1,0 +1,100 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+body, html, main {
+	position: relative;
+	display: block;
+	width: 100vw;
+	height: 100vh;
+	background: #000;
+}
+
+nav {
+	width: 100vw;
+	position: fixed;
+	top: 0;
+	z-index: 9999;
+
+	background: #000;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
+nav a {
+	color: white;
+	padding: .5rem;
+}
+
+.screen {
+	position: absolute;
+	height: 100vh;
+	width: 100vw;
+	overflow: hidden;
+	z-index: -1;
+}
+
+.screen:target {
+	z-index: 999;
+}
+
+.screen > .content {
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.openTransition {
+	position: absolute;
+	display: block;
+	width: 100vw;
+	height: 33%;
+	top: 0;
+	background: rgba(0,0,0,.20);
+}
+
+.screen:target  > .openTransition:nth-child(odd) {
+	animation: openRight 1s forwards;
+}
+.screen:target  > .openTransition:nth-child(even) {
+	animation: openLeft 1s forwards;
+}
+
+@keyframes openLeft {
+	from { 
+		right: 0vw; 
+	}
+	to { 
+		right: 100vw; 
+	}
+}
+
+@keyframes openRight {
+	from { 
+		right: 0vw; 
+	}
+	to { 
+		right: -100vw; 
+	}
+}
+
+#screen1 {
+	background: green;
+}
+
+#screen2 {
+	background: blue;
+}
+
+#screen3 {
+	background: red;
+}
